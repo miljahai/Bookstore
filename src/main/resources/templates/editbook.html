@@ -6,6 +6,29 @@
 </head>
 <body>
 	<h1>Edit book</h1>
+	<div>
+	<form th:object="${edit}" th:action="@{/save}" action="#" method="post">
+			<input type="hidden" id="id" th:field="*{id}" />
+			<div>
+			<label>Author</label>
+			<input type="text" th:field="*{author}" />
+			</div>
+			<div>
+			<label>Title</label>
+			<input type="text" th:field="*{title}" />
+			</div>
+			<div>
+			<label>ISBN</label>
+			<input type="text" th:field="*{isbn}" />
+			</div>
+			<div>
+			<label>Year</label>
+			<input type="text" th:field="*{bookyear}" />
+			</div>
+			
+			<input type="submit" value = "Save"></input>
+	</form>
+	</div>
 
 </body>
 </html>
