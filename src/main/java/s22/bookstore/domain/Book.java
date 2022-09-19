@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Book {
@@ -12,32 +14,57 @@ public class Book {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	
 	private Long id;
-	private String title, author, bookyear, isbn;
+	private String title, author, isbn;
 	private double price;
+	private int bookyear;
+	
+	@ManyToOne
+	@JoinColumn(name="categoryid")
+	private Category category;
 	
 	public Book() {
 		super();
 		
 	}
-	
-	public Book(String title, String author, String bookyear, String isbn, double price) {
-		super();
-		this.title = title;
-		this.author = author;
-		this.bookyear = bookyear;
-		this.isbn = isbn;
-		this.price = price;
-	}
 
-
-	public Book(Long id, String title, String author, String bookyear, String isbn, double price) {
+	public Book(Long id, String title, String author, String isbn, double price, int bookyear) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.author = author;
-		this.bookyear = bookyear;
 		this.isbn = isbn;
 		this.price = price;
+		this.bookyear = bookyear;
+	}
+
+	public Book(String title, String author, String isbn, double price, int bookyear) {
+		super();
+		this.title = title;
+		this.author = author;
+		this.isbn = isbn;
+		this.price = price;
+		this.bookyear = bookyear;
+	}
+
+	public Book(String title, String author, String isbn, double price, int bookyear, Category category) {
+		super();
+		this.title = title;
+		this.author = author;
+		this.isbn = isbn;
+		this.price = price;
+		this.bookyear = bookyear;
+		this.category = category;
+	}
+	
+	public Book(Long id, String title, String author, String isbn, double price, int bookyear, Category category) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.author = author;
+		this.isbn = isbn;
+		this.price = price;
+		this.bookyear = bookyear;
+		this.category = category;
 	}
 
 	public Long getId() {
@@ -64,14 +91,6 @@ public class Book {
 		this.author = author;
 	}
 
-	public String getBookyear() {
-		return bookyear;
-	}
-
-	public void setBookyear(String bookyear) {
-		this.bookyear = bookyear;
-	}
-
 	public String getIsbn() {
 		return isbn;
 	}
@@ -88,12 +107,31 @@ public class Book {
 		this.price = price;
 	}
 
-	@Override
-	public String toString() {
-		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", bookyear=" + bookyear + ", isbn="
-				+ isbn + ", price=" + price + "]";
+
+	public int getBookyear() {
+		return bookyear;
 	}
 
+	public void setBookyear(int bookyear) {
+		this.bookyear = bookyear;
+	}
+
+		
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", isbn=" + isbn + ", price=" + price
+				+ ", bookyear=" + bookyear + "]";
+	}
+	
+	
 
 		
 	
