@@ -1,6 +1,7 @@
 package s22.bookstore.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +19,7 @@ public class Book {
 	private double price;
 	private int bookyear;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="categoryid")
 	private Category category;
 	
@@ -128,7 +129,10 @@ public class Book {
 	@Override
 	public String toString() {
 		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", isbn=" + isbn + ", price=" + price
-				+ ", bookyear=" + bookyear + "]";
+				+ ", bookyear=" + bookyear + ", category=" + category + "]";
+	}
+
+	
 	}
 	
 	
@@ -136,4 +140,4 @@ public class Book {
 		
 	
 	
-}
+
