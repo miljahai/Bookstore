@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
 import s22.bookstore.domain.ApplicationUser;
 import s22.bookstore.domain.ApplicationUserRepository;
@@ -45,6 +44,7 @@ public class BookstoreApplication implements CommandLineRunner {
 			crepository.save(new Category("Detective"));
 			crepository.save(new Category("History"));
 			crepository.save(new Category("Scifi"));
+			crepository.save(new Category("Children"));
 			
 			repository.save(new Book("Loistava ystäväni", "Elena Ferrante", "1234", 25, 2016, crepository.findByName("Novel").get(0)));
 			repository.save(new Book("Hildur", "Satu Rämö", "56285628", 35, 2022, crepository.findByName("Detective").get(0)));
